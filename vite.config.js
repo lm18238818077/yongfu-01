@@ -22,5 +22,13 @@ export default defineConfig({
       { find: '@', replacement: resolve(__dirname, 'src') }
     ],
     extensions: ['.js', '.ts', '.tsx', '.vue', '.jsx', '.json']
+  },
+  css: {
+    preprocessorOptions: {
+      // define global less variable and mixin
+      less: {
+        additionalData: '@import "@/styles/variables.less";'
+      }
+    }
   }
 })

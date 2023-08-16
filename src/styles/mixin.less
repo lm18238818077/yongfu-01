@@ -1,0 +1,83 @@
+.center() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shadow(@color: @menuNoSelected){
+  background: transparent;
+  box-shadow: inset 6px 6px 6px @color, inset -6px -6px 6px @color;
+}
+
+.text(@color, @size: 14px, @line-height: normal) {
+  color: @color;
+  font-size: @size;
+  line-height: @line-height;
+}
+
+.wh(@w: 100%, @h: @w) {
+  width: @w;
+  height: @h;
+}
+
+.scrollbar(@className){
+  @{className}::-webkit-scrollbar {
+    width: 6px
+  }
+  @{className}::-webkit-scrollbar:horizontal {
+    height: 6px
+  }
+  @{className}::-webkit-scrollbar-track {
+      border-radius: 10px
+  }
+  @{className}::-webkit-scrollbar-thumb {
+    background-color: #0003;
+    border-radius: 10px;
+    transition: all .2s ease-in-out
+  }
+  @{className}::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background-color: #0000004d
+  }
+}
+
+// 禁止换行, 文本溢出省略号显示 (一行)
+.ellipsis() {
+  white-space: nowrap;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// 禁止换行, 文本溢出省略号显示 (多行)
+.ellipsis-mult(@n: 3) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: @n;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// 清除浮动
+.clearfix() {
+  &:after {
+    display: block;
+    clear: both;
+    content: '';
+    visibility: hidden;
+    height: 0;
+  }
+}
+
+// border
+.tabBorder(@borderWdith: 1.5px){
+  border: @borderWdith solid;
+  border-image-source: linear-gradient(90deg, #087fc8 0%, #66d5f9 47%, #087fc8 100%);
+  border-image-slice: 1;
+}
+
+.tabActiveBg(@deg: 90deg){
+  background: linear-gradient(@deg, #087fc8 0%, #0caadb 100%), linear-gradient(#5ad3ff, #5ad3ff);
+}
