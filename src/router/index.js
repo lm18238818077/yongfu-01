@@ -5,9 +5,14 @@ const routes = [
   {
     path: '/',
     component: Layout,
+    redirect: '/home',
     children: [
       { path: 'home', component: () => import('@/views/Home') },
       { path: 'about', component:() => import('@/views/Home') },
+      { path: 'video', component:() => import('@/views/Video') },
+      { path: 'case', component:() => import('@/views/Case') },
+      { path: 'case/:id', component:() => import('@/views/CaseDetail') },
+      { path: 'yy/:id', component:() => import('@/views/Yy') },
     ]
   },
 ]
