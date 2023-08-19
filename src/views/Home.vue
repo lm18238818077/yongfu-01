@@ -25,7 +25,7 @@
               <div class="textWrap">
                 <div class="m-text">{{ v.mText }}</div>
                 <div class="s-text">{{ v.sText }}</div>
-                <img class="sign" :src="imgBase('sign.png')" />
+                <img class="sign" v-lazy="imgBase('sign.png')" />
               </div>
             </div>
           </div>
@@ -38,9 +38,7 @@
           <div class="middle">
             <div class="item" v-for="v in instanceContentData" :key="v.mText" @click="handleRoute(`/case/${v.id}`)">
               <div class="img"
-              :style="{
-                background: `url(${imgCaseBase(`${v.id}.jpg`)}) center/cover no-repeat`,
-              }"
+                v-lazy:background-image="imgCaseBase(`${v.id}.jpg`)"
               />
               <div class="textWrap">
                 <div class="m-text">{{ v.mText }}</div>
@@ -55,9 +53,7 @@
         <div
           class="item"
           v-for="v in listWrapData"
-          :style="{
-            background: `url(${imgBase(v.src)}) center/cover no-repeat`,
-          }"
+          v-lazy:background-image="imgBase(v.src)"
           @click="handleRoute(`/yy/${v.id}`)"
         ></div>
       </div>
@@ -94,13 +90,13 @@ const imgCaseBase = (path) => {
 
 const enImgs = [
   {
-    src: "nav_en_1.png",
+    src: "nav_en_1.jpg",
   },
   {
-    src: "nav_en_2.png",
+    src: "nav_en_2.jpg",
   },
   {
-    src: "nav_en_3.png",
+    src: "nav_en_3.jpg",
   },
 ];
 
@@ -254,6 +250,7 @@ const listWrapData = ref([
           cursor: pointer;
           .img {
             height: 318px;
+            background: center/cover no-repeat;
           }
           .textWrap {
             height: auto;
@@ -276,6 +273,7 @@ const listWrapData = ref([
         margin-bottom: 40px;
         border-radius: 10px;
         cursor: pointer;
+        background: center/cover no-repeat;
       }
     }
   }

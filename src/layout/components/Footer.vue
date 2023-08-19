@@ -3,7 +3,7 @@
     <footer>
       <div class="content">
         <div class="left">
-          <img src="@/assets/sign.png" alt="" />
+          <img v-lazy="imgBase('sign.png')" alt="" />
         </div>
         <div class="middle">
           <div class="list">
@@ -24,10 +24,10 @@
         </div>
         <div class="right">
           <div class="wx">
-            <img src="@/assets/erweima.svg" alt="" />
+            <img v-lazy="imgBase('erweima.svg')" alt="" />
           </div>
           <div class="link">
-            <img src="@/assets/wx_xcx.png" alt="" />
+            <img v-lazy="imgBase('wx_xcx.png')" alt="" />
           </div>
         </div>
       </div>
@@ -52,7 +52,7 @@ defineProps({
 });
 
 const imgBase = (path) => {
-  return new URL(`../assets/${path}`, import.meta.url).href;
+  return new URL(`../../assets/${path}`, import.meta.url).href;
 };
 
 const footerData1 = computed(() => [

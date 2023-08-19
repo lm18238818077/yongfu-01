@@ -1,10 +1,18 @@
 <template>
   <header>
-    <router-link to="/"><img src="@/assets/nav_1.png" alt="" class="logo"/></router-link>
-    <div class="item">
+    <router-link to="/"
+      ><img src="@/assets/nav_1.png" alt="" class="logo"
+    /></router-link>
+    <div class="item" @mouseenter="enter('product')" @mouseleavel="leavel()">
       <span class="text">{{ $t("headMenus.menu1") }}</span>
       <div class="child product">
-        <div class="child_item" v-for="v in 5" :key="v" @click="handleRoute(`/yy/m${v}`)">
+        <div
+          v-if="curEnter === 'product'"
+          class="child_item"
+          v-for="v in 5"
+          :key="v"
+          @click="handleRoute(`/yy/m${v}`)"
+        >
           <img :src="imgBase(`product_${v}.png`)" alt="" height="38" />
           <img
             class="p_img"
@@ -36,11 +44,17 @@
         </div>
       </div>
     </div>
-    <div class="item">
+    <div class="item" @mouseenter="enter('product')" @mouseleavel="leavel()">
       <span class="text">{{ $t("headMenus.menu3") }}</span>
       <div class="child instance">
         <div class="instance_wrap">
-          <div class="item_wrap" v-for="v in instanceData" :key="v" @click="handleRoute(`/case/${v.id}`)">
+          <div
+            v-if="curEnter === 'product'"
+            class="item_wrap"
+            v-for="v in instanceData"
+            :key="v"
+            @click="handleRoute(`/case/${v.id}`)"
+          >
             <img :src="imgCaseBase(`${v.id}.jpg`)" alt="" />
             <div class="name">{{ v.name }}</div>
           </div>
@@ -71,13 +85,15 @@
 <script setup>
 import { ref, computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { useRoute, useRouter } from 'vue-router'
-const router = useRouter()
+import { useRoute, useRouter } from "vue-router";
+const router = useRouter();
 const { t, locale } = useI18n();
 
 defineProps({
   msg: String,
 });
+
+const curEnter = ref();
 
 const imgBase = (path) => {
   return new URL(`../../assets/${path}`, import.meta.url).href;
@@ -109,7 +125,7 @@ const videoData = ref([
   },
   {
     title: t("headMenus.video.m4.t"),
-    video: [{ src: "dd", name: t("headMenus.video.m4.c1")}],
+    video: [{ src: "dd", name: t("headMenus.video.m4.c1") }],
   },
   {
     title: t("headMenus.video.m5.t"),
@@ -147,9 +163,17 @@ const handleCommand = (val) => {
 
 const handleRoute = (path) => {
   if (path) {
-    router.push(path)
+    router.push(path);
   }
-}
+};
+
+const enter = (type) => {
+  curEnter.value = type;
+};
+
+const leavel = () => {
+  curEnter.value = "";
+};
 </script>
 
 <style scoped lang="less">
@@ -169,11 +193,11 @@ header {
     height: 24px;
     margin-right: 20px;
   }
-  & > .icon{
+  & > .icon {
     margin-left: 20px;
     cursor: pointer;
-    svg{
-      outline: none
+    svg {
+      outline: none;
     }
   }
   .item {
@@ -233,9 +257,9 @@ header {
               left: 2px;
             }
           }
-          .p_img{
-          transition: all 0.3s;
-            &:hover{
+          .p_img {
+            transition: all 0.3s;
+            &:hover {
               transform: scale(1.1);
             }
           }
@@ -299,7 +323,7 @@ header {
               background: rgb(144, 194, 231);
               transition: all 0.3s;
               cursor: pointer;
-              &:hover{
+              &:hover {
                 transform: scale(1.05);
               }
             }
