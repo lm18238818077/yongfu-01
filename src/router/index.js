@@ -1,13 +1,12 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Layout from '@/Layout/index.vue'
 
 const routes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/home',
     children: [
-      { path: 'home', component: () => import('@/views/Home') },
+      { path: '', component: () => import('@/views/Home') },
       { path: 'about', component:() => import('@/views/Home') },
       { path: 'video', component:() => import('@/views/Video') },
       { path: 'case', component:() => import('@/views/Case') },
@@ -21,7 +20,7 @@ const routes = [
 // 你可以在这里输入更多的配置，但我们在这里
 // 暂时保持简单
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 })
 

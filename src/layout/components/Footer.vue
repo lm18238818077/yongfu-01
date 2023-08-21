@@ -33,7 +33,7 @@
       </div>
       <div class="bottom">
         <span>{{ $t("bottom.m1") }}</span>
-        <span>{{ $t("bottom.m2") }}</span>
+        <span @click="handleRoute('/')">{{ $t("bottom.m2") }}</span>
       </div>
     </footer>
   </div>

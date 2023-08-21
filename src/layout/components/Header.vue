@@ -226,7 +226,7 @@ header {
           height: 250px;
         }
         &.instance {
-          height: 200px;
+          height: 180px;
         }
       }
     }
